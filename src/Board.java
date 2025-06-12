@@ -1,24 +1,27 @@
 import java.util.List;
 
 public class Board {
-    private int dimensione;
+    private int righe;
+    private int colonne;
     private String[][] griglia;
 
     public Board(int dimensione) {
-        this.dimensione = dimensione;
-        this.griglia = new String[dimensione][dimensione];
+        this.righe = righe;
+        this.colonne = colonne;
+        this.griglia = new String[righe][colonne];
         costruisciGriglia();
     }
 
     //Metodo che usiamo solo per inizializzare la griglia con tutti "o" cioè celle vuote
     private void costruisciGriglia(){
-        for(int i = 0; i < dimensione; i++){
-            for(int j = 0; j < dimensione; j++){
+        for(int i = 0; i < righe; i++){
+            for(int j = 0; j < colonne; j++){
                 griglia[i][j] = "o";
             }
         }
     }
 
+    //Metodo per aggiornare la griglia
     public void aggiornaGriglia(List<Mostro> mostri){
         //Per prima cosa rimuoviamo tutti i vecchi mostri
         costruisciGriglia();
@@ -38,13 +41,37 @@ public class Board {
     }
     //Metodo per stampare la griglia
     public void stampaGriglia(){
-        for(int i = 0; i < dimensione; i++){
-            for(int j = 0; j < dimensione; j++){
+        for(int i = 0; i < righe; i++){
+            for(int j = 0; j < colonne; j++){
                 //Stampiamo una cella e uno spazio
                 System.out.print(this.griglia[i][j] + " ");
             }
             //alla fine di ogni riga andiamo a capo
             System.out.println();
         }
+    }
+
+    public int getRighe() {
+        return righe;
+    }
+
+    public void setRighe(int righe) {
+        this.righe = righe;
+    }
+
+    public int getColonne() {
+        return colonne;
+    }
+
+    public void setColonne(int colonne) {
+        this.colonne = colonne;
+    }
+
+    public String[][] getGriglia() {
+        return griglia;
+    }
+
+    public void setGriglia(String[][] griglia) {
+        this.griglia = griglia;
     }
 }
