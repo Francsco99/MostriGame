@@ -5,7 +5,7 @@ public class Board {
     private int colonne;
     private String[][] griglia;
 
-    public Board(int dimensione) {
+    public Board(int righe, int colonne) {
         this.righe = righe;
         this.colonne = colonne;
         this.griglia = new String[righe][colonne];
