@@ -1,3 +1,5 @@
+import java.util.Random;
+
 public class Mostro {
     private String nome;
     private float attacco;
@@ -11,6 +13,32 @@ public class Mostro {
         this.x = x;
         this.y = y;
         this.nome = nome;
+    }
+
+    public void muovi(int xDim, int yDim) {
+        Random rand = new Random();
+        int direzione = rand.nextInt(4); //nord, sud, est, ovest
+        //Memorizza temporaneamente le vecchie coordinate, non siamo sicuri che verranno usate
+        int newX = x;
+        int newY = y;
+
+        //Per capire come muovere il mostro
+        if(direzione == 0){
+            newX = newX-1;
+        } else if (direzione==1) {
+            newX = newX+1;
+        } else if (direzione==2) {
+            newY = newY+1;
+        }
+        else{
+            newY = newY-1;
+        }
+
+        //Per capire se siamo usciti dalla griglia
+        if(newX>=0 && newY>=0 && newX<xDim && newY<yDim){
+            this.x = newX;
+            this.y = newY;
+        }
     }
 
     //Ritorna true se il mostro ha punti vita
