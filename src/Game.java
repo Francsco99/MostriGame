@@ -33,6 +33,51 @@ public class Game {
         this.mostri.add(new Mostro("Granca",25, 3, x1,y1));
     }
 
+    public void startGame(){
+        for(int i = 0; i < this.turni; i++){
+            System.out.println("Turno "+i+": ");
 
+            //Muoviamo i mostri
+            for(Mostro m: this.mostri){
+                if(m.isVivo()){
+                    m.muovi(this.board.getRighe(),this.board.getColonne());
+                }
+            }
 
+            //Combattimento
+            Mostro m1 = this.mostri.get(0);
+            Mostro m2 = this.mostri.get(1);
+
+            if(m1.isVivo() && m2.isVivo() && m1.isVicino(m2)){
+                m1.attacca(m2);
+                if (m2.isVivo()){
+                    m2.attacca(m1);
+                }
+            }
+
+            //Aggiornamento posizioni
+            this.board.aggiornaGriglia(mostri);
+            board.stampaGriglia();
+
+            //Stampa info mostri
+            for (Mostro m: this.mostri){
+                m.descrizione();
+            }
+            System.out.println("-------------------");
+
+            if (!m1.isVivo() || !m2.isVivo()) {
+                System.out.println("Battaglia conclusa!");
+                break;
+            }
+
+        }
+
+        // Vincitore
+        for (Mostro m : mostri) {
+            if (m.isVivo()) {
+                System.out.println(m.getNome() + " ha vinto!");
+            }
+        }
+
+    }
 }
