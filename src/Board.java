@@ -1,3 +1,5 @@
+import java.util.List;
+
 public class Board {
     private int dimensione;
     private String[][] griglia;
@@ -17,6 +19,24 @@ public class Board {
         }
     }
 
+    public void aggiornaGriglia(List<Mostro> mostri){
+        //Per prima cosa rimuoviamo tutti i vecchi mostri
+        costruisciGriglia();
+
+        for(Mostro m : mostri){
+            int x = m.getX();
+            int y = m.getY();
+        //I mostri possono essere in due posizioni diverse o nella stessa
+            //Se la cella (x,y) NON ha una "o" allora già c'è un mostro
+            if(!this.griglia[x][y].equals("o")){
+                this.griglia[x][y] = "X"; //Se sono nella stessa posizione ci mettiamo X
+            }
+            else{
+                this.griglia[x][y] = m.getNome().substring(0,1).toUpperCase(); //Ci mettiamo la prima lettera del nome in maiuscolo
+            }
+        }
+    }
+    //Metodo per stampare la griglia
     public void stampaGriglia(){
         for(int i = 0; i < dimensione; i++){
             for(int j = 0; j < dimensione; j++){
