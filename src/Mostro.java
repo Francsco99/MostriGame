@@ -1,3 +1,4 @@
+import java.sql.SQLOutput;
 import java.util.Random;
 
 public class Mostro {
@@ -62,6 +63,9 @@ public class Mostro {
         return Math.abs(altroMostro.getX()- x) + Math.abs(altroMostro.getY()-y) ==1;
     }
 
+    public void descrizione(){
+        System.out.println("Nome: " + this.nome + "\nAttacco: " + this.attacco+"\nPunti Vita: " + this.puntiVita);
+    }
     public int getY() {
         return y;
     }
