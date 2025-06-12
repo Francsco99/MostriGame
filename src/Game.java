@@ -7,10 +7,11 @@ public class Game {
     private Board board;
     private List<Mostro> mostri;
 
-    public Game(int turni, Board board, List<Mostro> mostri){
+    public Game(int turni, int righe, int colonne){
         this.turni = turni;
-        this.board = board;
+        this.board = new Board(righe,colonne);
         this.mostri = new ArrayList<Mostro>();
+        generaMostri();
     }
 
     private void generaMostri(){
@@ -29,8 +30,8 @@ public class Game {
         } while (x2==x1 && y2==y1);
 
         //Per ora aggiungiamo due mostri in maniera statica
-        this.mostri.add(new Mostro("Nebbia",20, 5, x1,y1));
-        this.mostri.add(new Mostro("Granca",25, 3, x1,y1));
+        this.mostri.add(new Mostro("Nebbia",5, 20, x1,y1));
+        this.mostri.add(new Mostro("Granca",4, 25, x2,y2));
     }
 
     public void startGame(){
